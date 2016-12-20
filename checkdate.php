@@ -7,10 +7,14 @@ $schedules = json_decode($schedulesFile, true);
 $result = array_recursive_diff($json, $schedules);
 
 if(empty($result)) {
-	echo 'No changes';
-} else {
 	$date = new DateTime();
 	$date = $date->format("Y-m-d G:i:s");
+	echo 'No changes';
+	if ($lastChecked = fopen('lastChecked.date', 'w')) {
+		fwrite($lastChecked, $date);
+		fwrite($lastChecked, $date);
+	}
+} else {
 	if ($dateFile = fopen('schedules.date', 'w')) {
 		fwrite($dateFile, $date);
 		fwrite($dateFile, PHP_EOL);
