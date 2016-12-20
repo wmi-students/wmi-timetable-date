@@ -17,7 +17,6 @@ if(empty($result)) {
 } else {
 	if ($dateFile = fopen('schedules.date', 'w')) {
 		fwrite($dateFile, $date);
-		fwrite($dateFile, PHP_EOL);
 	}
 	if ($newJsonFile = fopen('schedules.json', 'w')) {
 		fwrite($newJsonFile, $jsonFile);
