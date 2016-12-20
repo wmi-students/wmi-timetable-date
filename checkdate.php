@@ -12,7 +12,7 @@ if(empty($result)) {
 	echo 'No changes';
 	if ($lastChecked = fopen('lastChecked.date', 'w')) {
 		fwrite($lastChecked, $date);
-		fwrite($lastChecked, $date);
+		fwrite($lastChecked, PHP_EOL);
 	}
 } else {
 	if ($dateFile = fopen('schedules.date', 'w')) {
