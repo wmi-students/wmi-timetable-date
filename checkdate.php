@@ -5,10 +5,10 @@ $schedulesFile = file_get_contents('schedules.json');
 $schedules = json_decode($schedulesFile, true);
 
 $result = array_recursive_diff($json, $schedules);
+$date = new DateTime();
+$date = $date->format("Y-m-d G:i:s");
 
 if(empty($result)) {
-	$date = new DateTime();
-	$date = $date->format("Y-m-d G:i:s");
 	echo 'No changes';
 	if ($lastChecked = fopen('lastChecked.date', 'w')) {
 		fwrite($lastChecked, $date);
